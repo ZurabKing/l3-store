@@ -14,6 +14,7 @@ export type ProductData = {
     isNew: boolean;
     kindId: number;
     name: string;
+    isDisabled: boolean;
     offsize: boolean;
     option: {
         name: string;

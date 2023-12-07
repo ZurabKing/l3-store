@@ -109,21 +109,40 @@ class ProductDetail extends Component {
   private _setInCart() {
     this.view.btnBuy.innerText = '✓ В корзине';
     this.view.btnBuy.onclick = this._removeProduct.bind(this);
+    this._setButtonCartDisabled(true);
   }
 
   private _removeInCart() {
     this.view.btnBuy.innerText = 'В корзину';
     this.view.btnBuy.onclick = this._addToCart.bind(this);
+    this._setButtonCartDisabled(false);
+  }
+
+  private _setButtonCartDisabled(isDisabled: boolean) {
+    if (isDisabled) {
+      this.view.btnBuy.classList.add('disable');
+    } else {
+      this.view.btnBuy.classList.remove('disable');
+    }
   }
 
   //Избранное
   private _setInFav() {
-    this.view.btnFavIcon.setAttribute('fill', 'var(--default-color)');
     this.view.btnFav.onclick = this._removeFavProduct.bind(this);
+    this._setButtonFavDisabled(true);
   }
 
   private _removeInFav() {
     this.view.btnFav.onclick = this._addToFavorites.bind(this);
+    this._setButtonFavDisabled(false);
+  }
+
+  private _setButtonFavDisabled(isDisabled: boolean) {
+    if (isDisabled) {
+      this.view.btnFavIcon.setAttribute('fill', 'var(--key-color)');
+    } else {
+      this.view.btnFavIcon.setAttribute('fill', 'var(--default-color)');
+    }
   }
 }
 
