@@ -64,3 +64,9 @@ export type AnalyticsParams = {
   payload: Record<string, unknown>;
   timestamp?: Date;
 };
+
+declare global {
+  interface Window {
+    userId: string;
+  }
+}
