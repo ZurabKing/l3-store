@@ -5,7 +5,92 @@
     }
   }
 
+  &__searchHints {
+    display: flex;
+    align-items: center;
+    padding: 22px 0px 48px 64px;
+    font-weight: 550;
+    font-size: 22px;
+    line-height: 24px;
+  }
+
   &__popular {
     margin-top: 30px;
+  }
+  .search {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: fit-content;
+    font-size: 16px;
+    font-weight: 550;
+  }
+  .search-input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 900px;
+    width: 100%;
+    height: 60px;
+    overflow: hidden;
+    background-clip: padding-box;
+    margin-bottom: 5px;
+    position: relative;
+    cursor: text;
+    background-image: radial-gradient(
+        circle at 100% 100%,
+        transparent 12px,
+        #da15b8 12px,
+        #da15b8 14px,
+        transparent 14px
+      ),
+      linear-gradient(to right, #da15b8, #8d06cc),
+      radial-gradient(circle at 0% 100%, transparent 12px, #8d06cc 12px, #8d06cc 14px, transparent 14px),
+      linear-gradient(to bottom, #8d06cc, #8d06cc),
+      radial-gradient(circle at 0% 0%, transparent 12px, #8d06cc 12px, #8d06cc 14px, transparent 14px),
+      linear-gradient(to left, #8d06cc, #da15b8),
+      radial-gradient(circle at 100% 0%, transparent 12px, #da15b8 12px, #da15b8 14px, transparent 14px),
+      linear-gradient(to top, #da15b8, #da15b8);
+    background-size:
+      14px 14px,
+      calc(100% - 28px) 2px,
+      14px 14px,
+      2px calc(100% - 28px);
+    background-position:
+      top left,
+      top center,
+      top right,
+      center right,
+      bottom right,
+      bottom center,
+      bottom left,
+      center left;
+    background-repeat: no-repeat;
+
+    input {
+      border-radius: 20px;
+      width: 99%;
+      height: 89%;
+      border: none;
+      outline: none;
+      font-weight: 400;
+      font-size: 22px;
+      line-height: 32px;
+      letter-spacing: -1px;
+
+      &::placeholder {
+        font-weight: 400;
+        font-size: 22px;
+        line-height: 32px;
+        letter-spacing: -1px;
+        color: rgba(230, 225, 239, 1);
+      }
+    }
+  }
+
+  .homepage__searchHints {
+    padding: 0;
   }
 }

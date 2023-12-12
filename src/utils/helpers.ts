@@ -1,3 +1,5 @@
+import { searchHintsList } from 'types';
+
 export const genUUID = () => {
   let d = new Date().getTime();
   if (window.performance && typeof window.performance.now === 'function') {
@@ -32,4 +34,8 @@ export const isInViewport = (element: HTMLElement) => {
   const rect = element.getBoundingClientRect();
 
   return rect.top >= 0 && rect.left >= 0 && rect.bottom <= window.innerHeight && rect.right <= window.innerWidth;
+};
+
+export const formatProductNamesForHref = (searchHintsNames: searchHintsList) => {
+  return searchHintsNames.map((el) => el.productName.replace(/ /g, '%20'));
 };

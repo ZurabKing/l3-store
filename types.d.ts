@@ -70,3 +70,9 @@ declare global {
     userId: string;
   }
 }
+
+export type searchHint = {
+  productName: string;
+};
+
+export type searchHintsList = searchHint[];
