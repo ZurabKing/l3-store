@@ -5,6 +5,7 @@ import { ProductData } from 'types';
 import html from './productDetail.tpl.html';
 import { cartService } from '../../services/cart.service';
 import { favoritesService } from '../../services/favorites.service';
+import { analyticsApi } from '../../services/analytics.service';
 
 class ProductDetail extends Component {
   more: ProductList;
@@ -45,6 +46,7 @@ class ProductDetail extends Component {
     } else {
       this._removeInCart();
     }
+
     //Избранное
     const isInFav = await favoritesService.isInFavorites(this.product);
 
@@ -76,6 +78,13 @@ class ProductDetail extends Component {
 
     cartService.addProduct(this.product);
     this._setInCart();
+
+    analyticsApi.sendAnalytic({
+      type: 'addToCard',
+      payload: {
+        ...this.product
+      }
+    });
   }
 
   //Удаление с корзины

@@ -4,6 +4,7 @@ import { Product } from '../product/product';
 import { formatPrice } from '../../utils/helpers';
 import { cartService } from '../../services/cart.service';
 import { ProductData } from 'types';
+import { analyticsApi } from '../../services/analytics.service';
 
 class Checkout extends Component {
   products!: ProductData[];
@@ -29,6 +30,20 @@ class Checkout extends Component {
   }
 
   private async _makeOrder() {
+    const productIds = this.products.map((product) => product.id);
+    const totalPrice = this.products.reduce((acc, product) => acc + product.salePriceU, 0);
+
+    console.log(this.products);
+
+    analyticsApi.sendAnalytic({
+      type: 'purchase',
+      payload: {
+        orderId: Date.now(),
+        totalPrice: Math.round(totalPrice / 1000),
+        productIds: productIds
+      }
+    });
+
     await cartService.clear();
     fetch('/api/makeOrder', {
       method: 'POST',
